@@ -33,6 +33,7 @@ int dequeue(Queue** queue)
     Queue* temporary = *queue;
     int value = (*queue)->head->value;
     (*queue)->head = (*queue)->head->next;
+    (*queue)->tail = NULL;
     free(temporary);
     return value;
 }
@@ -47,12 +48,13 @@ void delete(Queue* queue)
 
 }
 
-void queueCreate()
+Queue queueCreate()
 {
 
 }
 
 int main()
 {
-
+    Queue* queue = queueCreate();
+    enqueue(queue);
 }
