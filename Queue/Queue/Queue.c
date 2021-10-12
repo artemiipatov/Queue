@@ -1,7 +1,8 @@
 #include <stdbool.h>
 #include <stdlib.h>
+#include <stdio.h>
 
-typedef struct QueueElement{
+typedef struct QueueElement {
     int value;
     struct QueueElement* next;
 } QueueElement;
@@ -11,9 +12,16 @@ typedef struct Queue {
     QueueElement* tail;
 } Queue;
 
-void enqueue(Queue* queue, int number)
+void enqueue(Queue** queue, int number)
 {
-
+    QueueElement* newElement = malloc(sizeof(QueueElement));
+    if (newElement == NULL)
+    {
+        return;
+    }
+    newElement->value = number;
+    newElement->next = NULL;
+    (*queue)->tail = newElement;
 }
 
 int dequeue(Queue** queue)
@@ -39,7 +47,7 @@ void delete(Queue* queue)
 
 }
 
-void QueueCreate()
+void queueCreate()
 {
 
 }
