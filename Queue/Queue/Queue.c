@@ -39,12 +39,15 @@ int dequeue(Queue** queue)
 
 bool isEmpty(Queue* queue)
 {
-
+    return queue->head == NULL && queue->tail == NULL;
 }
 
 void delete(Queue* queue)
 {
-
+    while (!isEmpty(queue))
+    {
+        dequeue(queue);
+    }
 }
 
 void queueCreate()
