@@ -1,4 +1,5 @@
 #include <stdbool.h>
+#include <stdlib.h>
 #include <stdio.h>
 
 typedef struct QueueElement {
@@ -23,9 +24,17 @@ void enqueue(Queue** queue, int number)
     (*queue)->tail = newElement;
 }
 
-int dequeue(Queue* queue)
+int dequeue(Queue** queue)
 {
-
+    if (*queue == NULL || queue == NULL)
+    {
+        return;
+    }
+    Queue* temporary = *queue;
+    int value = (*queue)->head->value;
+    (*queue)->head = (*queue)->head->next;
+    free(temporary);
+    return value;
 }
 
 bool isEmpty(Queue* queue)
